@@ -11,9 +11,9 @@ Este relatório apresenta uma análise estatística do conjunto de dados AMD vs 
 
 ## 2\. Descrição do Conjunto de Dados
 
-* Fonte dos dados:(https://www.kaggle.com/datasets/alanjo/amd-processor-specifications)
+* Fonte dos dados:[Link para Dataset](https://www.kaggle.com/datasets/alanjo/amd-processor-specifications)
 * Número de observações (linhas): 61
-* Número de variáveis (colunas): 7
+* Número de variáveis (colunas): 8
 
 ### 2.1. O que representam os dados?
 
@@ -21,14 +21,17 @@ Este conjunto de dados contém informações sobre processadores, dentre essas i
 
 | Coluna | Descrição | Tipo de Dado | Exemplo |
 |---|---|---|---|
-| `[Nome da Coluna 1]` | [Explicação detalhada da coluna 1] | [Ex: Numérico, Categórico, Data] | [Ex: 12.5, "Masculino", "2023-01-15"] |
-| `[Nome da Coluna 2]` | [Explicação detalhada da coluna 2] | [Ex: Numérico, Categórico, Data] | [Ex: 100, "Solteiro", "2024-03-20"] |
-| `[Nome da Coluna 3]` | [Explicação detalhada da coluna 3] | [Ex: Numérico, Categórico, Data] | [Ex: 75000, "Região Norte", "2025-06-01"] |
+| Cores| Quantidade de Núcleos do Processador (CPI)| Numérico | 32,24,16 |
+| Trheads | Quantidade de Trheads do Processador (CPU)| Numérico | 64,48,32 |
+| Speed| Quantidade de Velocidade em GHZ do Processador (CPU) | Numérico | 3.0,3.2,3.5 |
 | ... | ... | ... | ... |
 
 ### 2.2. Como os dados foram obtidos?
 
-Os dados foram coletados por meio de [descreva o método de coleta, ex: pesquisas, sensores, extração de banco de dados, etc.]. Quaisquer passos de pré-processamento, como limpeza ou transformação, foram [descreva brevemente, ex: realizados para lidar com valores ausentes, normalização, etc.].
+O banco de dados foi obtido na plataforma Kaggle e contém especificações técnicas de processadores das marcas AMD e Intel. Ele reúne informações como quantidade de núcleos (cores), número de threads, tamanho da memória cache (em MB), velocidade de clock (em GHz), preço estimado e o nome do modelo do processador.
+No caso da AMD, estão presentes processadores das famílias Ryzen, Threadripper e FX. Já a Intel está representada por suas linhas mais conhecidas, como Core i5, i7, i9 e Xeon.
+Esse conjunto de dados é útil para comparações de desempenho e custo-benefício entre as duas marcas, sendo uma ferramenta relevante para entusiastas, pesquisadores e profissionais da área de tecnologia. As informações provavelmente foram compiladas a partir de fontes públicas como sites oficiais dos fabricantes e varejistas de hardware. Onde tivemos um pré-processamento para a construção de uma nova coluna sendo ela intitulada MARCA.
+
 
 -----
 
@@ -36,10 +39,9 @@ Os dados foram coletados por meio de [descreva o método de coleta, ex: pesquisa
 
 Nesta análise, buscamos responder às seguintes questões/problemas:
 
-  * **Questão 1:** [Formule a primeira questão de pesquisa, ex: Existe uma relação significativa entre [Variável A] e [Variável B]?]
-  * **Questão 2:** [Formule a segunda questão de pesquisa, ex: Qual o impacto de [Variável C] em [Variável D]?]
-  * **Questão 3:** [Formule a terceira questão de pesquisa, ex: Existem grupos distintos nos dados com base em [Variáveis X, Y, Z]?]
-  * ...
+  * **Questão 1:** Onde pode facilitar, a compra para algumas pessoas referente a essas duas marcas.
+  * **Questão 2:** Curiosidade sobre algumas informações, por exemplo desempenho, custo benefício, e que nem citado antes, auxilio para comprar quaisquer desses CPU's analisados.
+  
 
 -----
 

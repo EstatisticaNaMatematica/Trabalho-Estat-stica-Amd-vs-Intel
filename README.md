@@ -1217,6 +1217,7 @@ shapiro.test(nuclintel)
 ## Os componentes do processador(variáveis)influenciam fortemente no valor, e quanto mais componente mas o valor tende a subir
 ## Entre as marcas Amd se mostra mais consistente, pelo valor que se paga e aquilo que o processador entrega
 
+```
 -----
 
 ## 5\. Figuras Geradas e Explicações

@@ -101,7 +101,12 @@ print(t_test_resultado)
 
 ### 5.1. Histograma
 #### 5.1.1 Histograma da Variável [Frequência AMD]
+<<<<<<< HEAD
+![IMAGEM HISTOGRAMA](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Histograma/histograma%20-%20frequencia%20amd.png)
 
+=======
+
+>>>>>>> 5d49035e39a5bbe02c7e933145d38cdb8b2c5d83
   * **Explicação:** Este histograma ilustra a distribuição das frequências (em GHz) dos processadores AMD. É possível perceber que a maioria desses processadores opera entre aproximadamente 3,0 GHz e 4,0 GHz, com uma concentração mais evidente na faixa de 3,2 a 3,8 GHz.
 
 A forma da distribuição sugere uma leve assimetria para a esquerda, já que os valores se agrupam principalmente em torno da média, mas há alguns poucos processadores com frequências menores, como 2,8 GHz, que puxam a cauda da curva nessa direção.
@@ -111,7 +116,12 @@ Além da distribuição empírica, duas curvas foram adicionadas ao gráfico par
 Essa visualização ajuda a compreender melhor o perfil de desempenho dos processadores AMD no que diz respeito à frequência de operação. Além disso, permite avaliar se modelos estatísticos como a normal ou a exponencial são adequados para representar esse conjunto de dados, o que pode ser útil em análises comparativas, simulações ou previsões.
 
 #### 5.1.2 Histograma da Variável [Núcleo AMD]
+<<<<<<< HEAD
+![IMAGEM HISTOGRAMA](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Histograma/histograma%20-%20nucleos%20amd.png)
+
+=======
 ![Imagens Boxplot]
+>>>>>>> 5d49035e39a5bbe02c7e933145d38cdb8b2c5d83
 Este histograma representa a distribuição da quantidade de núcleos dos processadores AMD. Nota-se que a maior parte dos modelos analisados possui entre 6 e 12 núcleos, o que caracteriza uma forte concentração nessa faixa. Poucos modelos apresentam quantidades mais elevadas, como 16, 24 ou 32 núcleos.
 
 A distribuição é assimétrica à direita (positiva), indicando que há uma cauda estendida em direção a valores maiores, embora a maioria dos dados esteja concentrada em valores menores. Ou seja, a presença de processadores com muitos núcleos é menos comum, mas ainda significativa.
@@ -121,6 +131,8 @@ As curvas sobrepostas no gráfico ajudam a comparar os dados com distribuições
 Esse tipo de visualização é essencial para compreender o perfil dos processadores AMD disponíveis no mercado, especialmente no que diz respeito ao número de núcleos, que influencia diretamente no desempenho em tarefas paralelas. Além disso, permite avaliar se há modelos estatísticos adequados para representar a distribuição dessa variável, o que pode ser útil em estudos comparativos ou previsões de desempenho.
 
 #### 5.1.3 Histograma da Variável [Preço AMD]
+![IMAGEM HISTOGRAMA](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Histograma/histograma%20-%20pre%C3%A7o%20amd.png)
+
 Este histograma apresenta a distribuição dos preços dos processadores AMD. É possível observar que a maior parte dos modelos está concentrada na faixa de preços mais baixos, especialmente abaixo de 500 dólares. À medida que o preço aumenta, a frequência relativa dos processadores diminui consideravelmente, o que indica que os modelos mais caros são menos comuns.
 
 A distribuição é claramente assimétrica à direita (positiva), com uma cauda longa que se estende até valores acima de 1500 dólares. Isso sugere que há alguns modelos de alto desempenho com preços elevados, mas eles representam uma minoria dentro do conjunto analisado.
@@ -130,6 +142,8 @@ As curvas adicionadas ao gráfico ajudam a avaliar o ajuste das distribuições 
 Essa visualização é útil para compreender como os preços dos processadores AMD estão distribuídos no mercado e quais faixas de preço concentram a maior parte dos modelos. Além disso, permite avaliar qual modelo estatístico pode ser mais apropriado para representar esses dados em análises futuras.
 
 #### 5.1.4 Histograma da Variável [Frequência Intel]
+![IMAGEM HISTOGRAMA](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Histograma/histograma%20-%20frequencia%20intel.png)
+
 O histograma acima apresenta a distribuição da variável frequência (em GHz) dos processadores Intel. Percebe-se que a maioria dos modelos está concentrada na faixa entre 3,0 GHz e 4,0 GHz, com destaque para a região entre 3,2 e 3,8 GHz, onde ocorre o maior pico de frequência relativa.
 
 A forma da distribuição sugere uma ligeira assimetria negativa (à esquerda), com os valores mais frequentes localizados próximos à média e uma leve cauda voltada para as frequências mais baixas, por volta de 2,8 GHz. Isso indica que os modelos com frequências muito baixas são menos comuns entre os processadores Intel analisados.
@@ -139,6 +153,8 @@ As curvas sobrepostas permitem avaliar o quão bem distribuições teóricas se 
 Essa visualização ajuda a entender o comportamento das frequências de operação dos processadores Intel, o que pode ser relevante para análises comparativas com outras marcas (como AMD) e também para avaliar a aplicabilidade de modelos estatísticos na representação desses dados.
 
 #### 5.1.5 Histograma da Variável [Núcleo Intel]
+![IMAGEM HISTOGRAMA](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Histograma/histograma%20-%20nucleos%20intel.png)
+
 Este histograma mostra a distribuição da quantidade de núcleos presentes nos processadores Intel analisados. Observa-se que a maioria dos modelos possui entre 4 e 6 núcleos, o que representa a faixa com maior frequência relativa. À medida que a quantidade de núcleos aumenta, a frequência dos modelos vai diminuindo, indicando que processadores com 10 núcleos ou mais são menos comuns.
 
 A distribuição é claramente assimétrica à direita, com uma cauda que se estende para valores mais altos (até 18 núcleos), evidenciando a presença de alguns modelos de alto desempenho, porém em menor quantidade.
@@ -148,6 +164,7 @@ As curvas sobrepostas ajudam a visualizar como os dados se comparam com distribu
 Essa análise permite compreender a oferta de processadores Intel em termos de capacidade de processamento paralelo, além de mostrar quais distribuições estatísticas podem melhor descrever essa variável em estudos mais aprofundados.
 
 #### 5.1.6 Histograma da Variável [Preço AMD]
+![IMAGEM HISTOGRAMA](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Histograma/histograma%20-%20pre%C3%A7o%20intel.png)
 Este histograma apresenta a distribuição dos preços dos processadores Intel analisados. É possível perceber que a maior parte dos modelos se concentra na faixa de preço mais baixa, entre 0 e 1000 dólares. A frequência vai diminuindo gradualmente à medida que os preços aumentam, o que indica que processadores mais caros são bem menos comuns.
 
 A distribuição é nitidamente assimétrica à direita, com uma cauda longa se estendendo até preços próximos de 4000 dólares, evidenciando a presença de alguns modelos premium ou de alto desempenho.
@@ -158,6 +175,8 @@ Essa visualização ajuda a entender a disparidade de preços entre os modelos d
 
 ### 5.2. Gráfico de Dispersão 
 #### 5.2.1 Gráfico de Dispersão entre [Frequência AMD] e [Frequência Intel]
+![IMAGEM GRÁFICO DE DISPRSÃO](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Grafico%20de%20Dispersao/grafico%20de%20dispersao%20-%20frequencia%20amd.png)
+![IMAGEM GRÁFICO DE DISPERSÃO](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Grafico%20de%20Dispersao/grafico%20de%20dispersao%20-%20frequencia%20intel.png)
 
 Os gráficos Q-Q apresentados comparam a distribuição das frequências dos processadores AMD e Intel com a distribuição teórica normal. Essa análise é fundamental, já que a frequência de operação (em GHz) está diretamente relacionada ao desempenho computacional dos processadores, ou seja, quanto maior e mais estável for essa frequência, maior tende a ser a capacidade de processamento.
 
@@ -170,6 +189,9 @@ A proximidade dos dados com a distribuição normal reforça a consistência das
 Assim, os gráficos não apenas avaliam a normalidade dos dados, mas também dão indícios sobre a confiabilidade e o comportamento estatístico das frequências, atributos diretamente ligados à qualidade e ao desempenho dos processadores.
 
 #### 5.2.2 Gráfico de Dispersão entre [Núcleo AMD] e [Núcleo Intel]
+![IMAGEM GRÁFICO DE DISPERSÃO](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Grafico%20de%20Dispersao/grafico%20de%20dispersao%20-%20nucleo%20amd.png)
+![IMAGEM GRÁFICO DE DISPERSÃO](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Grafico%20de%20Dispersao/grafico%20de%20dispersao%20-%20nucleos%20intel.png)
+
   Os gráficos Q-Q acima representam a comparação entre a distribuição dos números de núcleos dos processadores AMD e Intel com uma distribuição teórica normal. Essa análise é relevante, pois o número de núcleos influencia diretamente na capacidade de processamento paralelo, sendo um dos principais fatores que determinam o desempenho multitarefa de um processador.
 
 No gráfico referente aos processadores AMD, observa-se uma forte assimetria positiva. Embora uma parte dos pontos centrais se alinhe relativamente bem à linha de referência, há um desvio acentuado na extremidade superior direita. Isso indica que há processadores AMD com quantidades significativamente maiores de núcleos do que seria esperado em uma distribuição normal, sugerindo uma variedade maior de modelos com alta capacidade de paralelismo. Essa discrepância também pode indicar a presença de outliers intencionais, modelos topo de linha que se distanciam dos padrões médios da marca.
@@ -181,6 +203,9 @@ Essa visualização é extremamente útil para a análise de desempenho, pois ev
 Em resumo, os gráficos não apenas mostram desvios da normalidade, mas também ajudam a entender o posicionamento de mercado e o foco de desempenho de cada fabricante, permitindo uma análise mais estratégica sobre qual arquitetura melhor se adequa a determinadas necessidades de uso.
 
 #### 5.2.3 Gráfico de Dispersão entre [Preço AMD] e [Preço Intel]
+![IMAGEM GRÁFICO DE DISPERSÃO](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Grafico%20de%20Dispersao/grafico%20de%20dispersao%20-%20pre%C3%A7o%20intel.png)
+![IMAGEM GRÁFICO DE DISPERSÃO](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Grafico%20de%20Dispersao/gr%C3%A1fico%20de%20dispers%C3%A3o%20-%20pre%C3%A7o%20amd.png)
+
 Os gráficos apresentados comparam a distribuição dos preços dos processadores AMD e Intel com uma distribuição normal teórica, permitindo uma análise visual sobre o comportamento estatístico desse atributo econômico fundamental na escolha de um processador.
 
 No caso da AMD, observa-se que, embora muitos pontos centrais estejam próximos da linha de normalidade, há uma curvatura acentuada nas extremidades superiores. Isso indica que existe um número considerável de processadores com valores muito acima da média, o que rompe a simetria esperada pela normal. Esses pontos mais altos sugerem a presença de modelos premium, que podem oferecer recursos superiores como mais núcleos, cache ampliado, ou frequências maiores, características que justificam os preços elevados, mas que também configuram outliers econômicos na distribuição.
@@ -194,8 +219,14 @@ Dessa forma, os gráficos não apenas mostram desvios da normalidade, mas eviden
 
 ### 5.3. Gráfico Boxplot 
 #### 5.3.1 Gráfico Boxplot da Variável Categórica [Frequência AMD] e [Frequência Intel]
+<<<<<<< HEAD
+![IMAGEM BOXPLOT](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Boxplot/boxplot%20-%20frequencia%20amd.png)
+![IMAGEM BOXPLOT](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Boxplot/boxplot%20-%20frequencia%20intel.png)
+
+=======
 
 
+>>>>>>> 5d49035e39a5bbe02c7e933145d38cdb8b2c5d83
 Os gráficos de boxplot apresentados permitem uma análise clara e objetiva da distribuição das frequências (em GHz) dos processadores das marcas AMD e Intel. Esse tipo de gráfico é bastante útil para identificar o comportamento central dos dados, a dispersão, a simetria e a presença de valores atípicos, elementos que ajudam a interpretar a consistência e a performance média dos processadores.
 
 No boxplot da AMD, observa-se uma distribuição relativamente simétrica e compacta, com a maioria das frequências concentradas entre aproximadamente 3,0 GHz e 4,0 GHz. A linha central (mediana) está ligeiramente abaixo dos 3,5 GHz, sugerindo que metade dos modelos testados possui frequências abaixo desse valor e a outra metade, acima. Há apenas um outlier visível, com frequência acima de 4,5 GHz, indicando um modelo que ultrapassa consideravelmente o padrão dos demais, provavelmente voltado a alto desempenho. O intervalo interquartil (IQR) é bem definido, o que demonstra consistência e pouca variação entre os modelos.
@@ -207,6 +238,9 @@ A importância desses boxplots na análise de desempenho é significativa: eles 
 Em conjunto, esses gráficos mostram que, para além dos valores máximos ou médios, é essencial observar a distribuição e a regularidade da performance oferecida. Em decisões que envolvem custo-benefício e previsibilidade de desempenho, essas informações se tornam valiosas, tanto para consumidores quanto para profissionais da área de tecnologia e engenharia.
 
 #### 5.3.2 Gráfico Boxplot da Variável Categórica [Núcleo AMD] e [Núcleo Intel]
+![IMAGEM BOXPLOT](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Boxplot/boxplot%20-%20cores%20amd.png)
+![IMAGEM BOXPLOT](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Boxplot/boxplot%20-%20cores%20intel.png)
+
 Os boxplots apresentados ilustram a distribuição da quantidade de núcleos dos processadores AMD e Intel, oferecendo uma visão clara sobre a dispersão, a concentração e os valores extremos dessa característica fundamental de desempenho.
 
 No gráfico da AMD, observamos uma mediana próxima de 6 núcleos, com a maior parte dos processadores concentrada entre 6 e 8 núcleos. No entanto, o boxplot também revela a presença de diversos outliers, com modelos que possuem até 32 núcleos. Essa característica indica que a AMD oferece uma ampla variedade de modelos com múltiplos núcleos, ampliando suas opções para aplicações que exigem processamento paralelo intenso, como servidores, renderização gráfica ou virtualização. Os outliers não são erros, mas sim modelos extremos intencionais, que elevam significativamente a capacidade de multitarefa.
@@ -219,6 +253,9 @@ Em síntese, enquanto a AMD aposta em diversidade e alto número de núcleos par
 
 
 #### 5.3.3 Gráfico Boxplot da Variável Categórica [Preço AMD] e [Preço Intel]
+![IMAGEM BOXPLOT](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Boxplot/boxplot%20-%20pre%C3%A7o%20amd.png)
+![IMAGEM BOXPLOT](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Boxplot/boxplot%20-%20pre%C3%A7o%20intel.png)
+
 Ao comparar os preços dos processadores AMD e Intel com base nos gráficos apresentados, a gente percebe rapidamente que as duas marcas seguem caminhos bem diferentes. Isso influencia diretamente no que a gente leva pra casa em termos de desempenho e custo-benefício.
 
 No gráfico da AMD, os preços estão bastante concentrados entre $200 e $500. Essa faixa mostra que a marca tem como proposta oferecer processadores acessíveis, que entregam um bom desempenho, especialmente quando se trata de tarefas que usam vários núcleos ao mesmo tempo. E é aí que a AMD ganha força. Ela consegue colocar no mercado modelos mais baratos, mas que não deixam a desejar quando o assunto é desempenho em multitarefa, edição de vídeo, softwares pesados ou mesmo jogos modernos. Além disso, aparecem alguns modelos com preços bem mais altos, chegando até $1700, que são voltados para quem precisa de muito poder de fogo. Esses são os chamados outliers nos gráficos, mas eles fazem parte da linha premium da AMD, voltada para usuários mais exigentes, como profissionais que trabalham com renderização 3D ou servidores.
@@ -236,8 +273,14 @@ No fundo, essa comparação deixa claro que não existe uma marca melhor de form
 Então, antes de decidir, vale se perguntar: você quer gastar menos e ainda ter um bom desempenho, talvez até mais núcleos? Ou está disposto a pagar mais para ter um processador com uma performance mais previsível e refinada? Com base nos dados analisados, essa resposta fica muito mais clara.
 
 #### 5.3.4 Gráfico Boxplot da Variável Categórica [Cache AMD] e [Cache Intel]
+<<<<<<< HEAD
+![IMAGEM BOXPLOT](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Boxplot/boxplot%20-%20cache%20intel.png)
+![IMAGEM BOXPLOT](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Boxplot/boxplot%20-%20cache%20amd.png)
+
+=======
 ![Imagens Boxplot](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Boxplot/boxplot%20-%20cache%20amd.png)
 
+>>>>>>> 5d49035e39a5bbe02c7e933145d38cdb8b2c5d83
 Os gráficos apresentados são boxplots que comparam a distribuição da memória cache (em megabytes) dos processadores das marcas AMD e Intel. A memória cache é um componente crucial para o desempenho do processador, pois permite o acesso mais rápido a dados frequentemente utilizados.
 
 No boxplot da AMD, observa-se que a maior parte dos processadores possui memória cache concentrada entre aproximadamente 50 MB e 350 MB. A mediana (linha central do boxplot) está em torno de 150 MB, indicando que metade dos modelos analisados tem até esse valor de cache. Há também a presença de outliers valores significativamente acima da média que chegam a ultrapassar 1600 MB, demonstrando que a AMD possui alguns modelos com desempenho elevado, embora sejam exceções dentro do conjunto analisado. A distribuição dos dados é relativamente dispersa, o que indica uma grande variedade de modelos, desde os mais básicos até os mais potentes.

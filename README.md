@@ -50,50 +50,1172 @@ Nesta análise, buscamos responder às seguintes questões/problemas:
 
 Todos os códigos para esta análise foram desenvolvidos em **R**.
 
-Todos os códigos em R usados na análise estão incluídos abaixo.
-Para formatar blocos de código em Markdown no GitHub, use três crases (\`\`\`) seguidas da linguagem (`r` para R):
-
 ```r
-# Carregar pacotes
-library(tidyverse)
+Todos os códigos em R usados na análise estão incluídos abaixo.
+# Define o diretório de trabalho
+setwd("C:\\Users\\detto\\OneDrive\\Documentos\\dados.csv")
 
-# Leitura dos dados
+# Carrega o pacote dplyr
+library(dplyr)
+
+# Lê o CSV
 dados <- read.csv("dados.csv")
 
-# Visualizar os primeiros registros
-head(dados)
-```
+# Verifica os nomes das colunas
+print(colnames(dados))  # só pra confirmar que "Name" está correto
 
-```r
-# Carregando pacotes necessários
-library(ggplot2)
-library(dplyr)
-library(knitr) # Para tabelas bonitas
-library(Tidyverse) # Pacote para manipulação de dados
-library(stats) # Para funções estatísticas
+# Cria a nova coluna "Marca"
+dados <- dados %>%
+  mutate(Marca = ifelse(grepl("Ryzen|FX", Name), "AMD",
+                        ifelse(grepl("I|i|Xeon", Name), "Intel", "Desconhecida")))
 
-# Exemplo de carregamento de dados
-dados <- read.csv("dados_exemplo.csv")
+# Visualiza o resultado
+View(dados)
 
-# Exemplo de visualização das primeiras linhas do dataframe
-head(dados)
+Amd <- dados[dados$Marca=="AMD",]
+Intel <- dados[dados$Marca=="Intel",]
 
-# Exemplo de cálculo de estatísticas descritivas
-summary(dados$ColunaNumerica)
+#######################################################################
+#MEDIA#
+#######################################################################
 
-# Exemplo de um gráfico de dispersão
-ggplot(dados, aes(x = ColunaX, y = ColunaY)) +
-  geom_point() +
-  labs(title = "Gráfico de Dispersão de X vs Y",
-       x = "Eixo X",
-       y = "Eixo Y") +
-  theme_minimal()
+mediapreçoamd <- mean(Amd$Price)
+mediapreçointel <- mean(Intel$Price)
 
-# Exemplo de teste t
-t_test_resultado <- t.test(dados$GrupoA, dados$GrupoB)
-print(t_test_resultado)
+## MEDIA DO PREÇO DOS PROCESSADORES
+## INTEL          ## AMD
+## 914.74         ## 298.5
 
-```
+medianucleosamd <- mean(Amd$Cores)
+medianucleosintel <- mean(Intel$Cores)
+
+## MEDIA DOS NÚCLEOS DOS PROCESSADORES
+## INTEL          ## AMD
+## 8.83           ## 9.2
+
+mediafrequenciadoprocessadoramd <- mean(Amd$Speed.GHz.)
+mediafrequenciadoprocessadorintel <- mean(Intel$Speed.GHz.)
+
+## MEDIA DA FREQUÊNCIA DOS PROCESSADORES
+## INTEL          ## AMD
+## 3.42           ## 3.59
+
+mediacacheamd <- mean(Amd$Cache.M.)
+mediacacheintel <- mean(Intel$Cache.M.)
+
+## MEDIA DOS CACHÊ DOS PROCESSADORES
+## INTEL          ## AMD
+## 16.09          ## 6.4
+
+
+#########################################################################
+## MEDIANA
+#########################################################################
+
+medianapreçoprocessadoresamd <- median(Amd$Price)
+medianpreçoprocessadoreintel <- median(Intel$Price)
+
+## MEDIANA DOS PREÇOS DOS PROCESSADORES
+## INTEL          ## AMD
+## 589            ## 162.5
+
+mediananucleoprocessadoramd <- median(Amd$Cores)
+mediananucleoprocessadorintel <-median(Intel$Cores)
+
+## MEDIANA DOS NÚCLEOS DOS PROCESSADORES
+## INTEL          ## AMD
+## 8              ## 8
+
+medianafrequenciaamd <- median(Amd$Speed.GHz.)
+medianafrequenciaintel <- median(Intel$Speed.GHz.)
+
+## MEDIANA DA FREQUÊNCIA DOS PROCESSADORES
+## INTEL          ## AMD
+## 3.4            ## 3.5
+
+medianacacheamd <- median(Amd$Speed.GHz.)
+medianacacheintel <- median(Intel$Speed.GHz.)
+
+## MEDIANA DO CACHÊ DOS PROCESSADORES
+## INTEL          ## AMD
+## 3.4            ## 3.5
+
+######################################################################
+## AMPLITUDE
+######################################################################
+
+ampliprecamd <- range(Amd$Price)
+diff(ampliprecamd)
+ampliprecintel <- range(Intel$Price)
+diff(ampliprecintel)
+
+## AMPLITUDE PREÇO DOS PROCESSADORES
+## INTEL          ## AMD
+## 3301           ## 1660
+
+amplinucamd <- range(Amd$Cores)
+diff(amplinucamd)
+amplinucintel <- range(Intel$Cores)
+diff(amplinucintel)
+
+
+## AMPLITUDE NÚCLEO DOS PROCESSADORES
+## INTEL          ## AMD
+## 14             ## 28
+
+amplifreqamd <- range(Amd$Speed.GHz.)
+diff(amplifreqamd)
+amplifreqintel <- range(Intel$Speed.GHz.)
+diff(amplifreqintel)
+
+
+## AMPLITUDE FREQUÊNCIA DOS PROCESSADORES
+## INTEL          ## AMD
+## 1.7            ## 1.9 
+
+amplicacheamd <- range(Amd$Cache.M.)
+diff(amplicacheamd)
+amplicacheintel <- range(Intel$Cache.M.)
+diff(amplicacheintel)
+
+## AMPLITUDE CACHÊ DOS PROCESSADORES
+## INTEL          ## AMD
+## 9              ## 12
+
+
+#########################################################################
+## DESVIO PADRÃO
+#########################################################################
+
+sdprecamd <- sd(Amd$Price)
+sdprecintel <- sd(Intel$Price)
+
+## DESVIO PADRÃO PREÇO DOS PROCESSADORES
+## INTEL          ## AMD
+## 9              ## 12
+
+sdnucamd <- sd(Amd$Cores)
+sdnucintel <- sd(Intel$Cores)
+## DESVIO PADRÃO NÚCLEOS DOS PROCESSADORES
+## INTEL          ## AMD
+## 4.28           ## 6.002 
+
+sdfreqamd <- sd(Amd$Speed.GHz.)
+sdfreqintel <- sd(Intel$Speed.GHz.
+)
+## DESVIO PADRÃO FREQUÊNCIA DOS PROCESSADORES
+## INTEL          ## AMD
+## 0.39           ## 0.43 
+
+sdcachamd <- sd(Amd$Cache.M.)
+sdcachintel<-sd(Intel$Cache.M.)
+
+## DESVIO PADRÃO CACHÊ DOS PROCESSADORES
+## INTEL          ## AMD
+## 7.63           ## 2.74
+
+##############################################################################
+## COEFICIENTE DE VARIAÇÃO
+##############################################################################
+
+coefvarprecamd <- sdprecamd/mediapreçoamd
+coefvarprecintel<- sdprecintel/mediapreçointel
+
+## COEFICIENTE DE VARIAÇÃO PREÇO DOS PROCESSADORES
+## INTEL          ## AMD
+## 0.83           ## 1.29
+
+coefvarnucamd <- sdnucamd/medianucleosamd
+coefvarnucintel <- sdnucintel/medianucleosintel
+
+## COEFICIENTE DE VARIAÇÃO NÚCLEO DOS PROCESSADORES
+## INTEL          ## AMD
+##                ##
+
+coefvarifreqamd <- sdfreqamd/mediafrequenciadoprocessadoramd
+coefvarifreqintel <- sdfreqintel/mediafrequenciadoprocessadorintel
+
+## COEFICIENTE DE VARIAÇÃO FREQUÊNCIA DOS PROCESSADORES
+## INTEL          ## AMD
+## 0.11           ## 0.12
+
+coefvarcachamd <- sdcachamd/medianacacheamd
+coefvarcachintel <- sdcachintel/medianacacheintel
+
+## COEFICIENTE DE VARIAÇÃO CACHÊ DOS PROCESSADORES
+## INTEL          ## AMD
+## 2.24           ## 0.78
+
+#######################################################################
+## QUARTIS
+#######################################################################
+
+quantile(Amd$Price,c(0.25, 0.50, 0.75))
+quantile(Intel$Price,c(0.25, 0.50, 0.75))
+
+## QUARTIS PREÇOS DOS PROCESSADORES
+## AMD   
+##  25%    50%  75%
+## 69.25 162.50 295
+
+## INTEL
+##  25%   50%   75%
+##  366.5 589 1155.5
+
+quantile(Amd$Cores, c(0.25, 0.50, 0.75))
+quantile(Intel$Cores, c(0.25, 0.50, 0.75))
+
+## QUARTIS NÚCLEO DOS PROCESSADORES
+## INTEL   
+##  25%    50%  75%
+##   6      8   11
+
+## AMD
+##  25%  50%   75%
+##   6    8     8
+
+quantile(Amd$Speed.GHz., c(0.25, 0.50, 0.75))
+quantile(Intel$Speed.GHz., c(0.25, 0.50, 0.75))
+
+## QUARTIS FREQUÊNCIA DOS PROCESSADORES
+## INTEL   
+##  25%  50%  75%
+##  3.2  3.4  3.6 
+
+## AMD
+##  25%  50%   75%
+##  3.3  3.5   3.8
+
+quantile(Amd$Cache.M., c(0.25, 0.50, 0.75))
+quantile(Intel$Cache.M., c(0.25, 0.50, 0.75))
+
+## QUARTIS CACHÊ DOS PROCESSADORES
+## INTEL   
+##   25%   50%   75%
+##  11.50  15   19.25
+
+## AMD
+##  25%  50%   75%
+##   4    6     8
+
+#######################################################################
+## INTERVALO INTERQUARTIL
+#######################################################################
+
+iqrprecamd <- IQR(Amd$Price)
+iqrprecintel  <-IQR(Intel$Price)
+
+#INTERVALO INTERQUARTIL DOS PREÇOS DOS PROCESSADORES
+## AMD         ## INTEL
+## 225.75      ## 789
+
+iqrnucamd  <- IQR(Amd$Cores)
+iqrnucintel  <-IQR(Intel$Cores)
+
+#INTERVALO INTERQUARTIL DOS NÚCLEOS DOS PROCESSADORES
+## AMD   ## INTEL
+## 2     ## 5
+
+iqrfreqamd <- IQR(Amd$Speed.GHz.)
+iqrfreqintel  <-IQR(Intel$Speed.GHz.)
+
+#INTERVALO INTERQUARTIL DA FREQUÊNCIA DOS PROCESSADORES
+## AMD   ## INTEL
+## 0.5   ## 0.4 
+
+iqrcachamd <- IQR(Amd$Cache.M.)
+iqrcachintel  <-IQR(Intel$Cache.M.)
+
+#INTERVALO INTERQUARTIL DO CACHÊ DOS PROCESSADORES
+## AMD   ## INTEL
+## 4     ## 7.75
+
+##########################################################################
+## BOXPLOT
+##########################################################################
+
+boxplot(Price ~ Marca, data = Amd, 
+        ylab = "Preço", xlab = "AMD")
+
+boxplot(Price ~ Marca, data = Intel, 
+        ylab = "Preço", xlab = "Intel")
+
+#BOXPLOT PREÇO
+
+boxplot(Cores ~ Marca, data = Amd, 
+        ylab = "Cores", xlab = "AMD")
+
+boxplot(Cores ~ Marca, data = Intel, 
+        ylab = "Cores", xlab = "Intel")
+
+#BOXPLOT NÚCLEOS
+
+boxplot(Speed.GHz. ~ Marca, data = Amd, 
+        ylab = "Speed.GHz.", xlab = "AMD")
+
+
+boxplot(Price ~ Marca, data = Intel, 
+        ylab = "Speed.GHz.", xlab = "Intel")
+
+#BOXPLOT FREQUÊNCIA
+
+boxplot(Price ~ Marca, data = Amd, 
+        ylab = "Cache.M.", xlab = "AMD")
+
+boxplot(Price ~ Marca, data = Intel, 
+        ylab = "Cache.M.", xlab = "Intel")
+
+#BOXPLOT CACHÊ
+
+
+###########################################################################
+## PROBABILIDADE
+###########################################################################
+
+
+###########################################################################
+## ANÁLISE PREÇO AMD
+###########################################################################
+
+precamd <- Amd$Price
+mediaprecamd <- mean(precamd)
+desvioprecamd <- sd(precamd)
+fteoricoNprecamd <- dnorm(seq(min(precamd), max(precamd),by=1), mean=mediaprecamd,sd=desvioprecamd)
+fteoricoEprecamd <- dexp(seq(min(precamd), max(precamd), by=1), rate=1/mediaprecamd)
+
+hist(precamd,freq=F,xlab="Preço Amd",ylab="Frequência RelatiVa",main="")
+lines(seq(min(precamd),max(precamd),by=1),fteoricoNprecamd,col="red")
+lines(seq(min(precamd),max(precamd),by=1),fteoricoEprecamd,col="blue")
+legend(x=800,y=0.0020,legend=c("Normal","Exponencial"),lty=1,col=c("red","blue"),bty="n")
+
+qqnorm(precamd,xlab="Quantis Teoricos",ylab="Amostra dos Quantis",main="Preço Amd")
+qqline(precamd,col="purple")
+
+
+###########################################################################
+## ANÁLISE FREQUÊNCIA AMD
+###########################################################################
+
+freqamd <- Amd$Speed.GHz.
+mediafreqamd <- mean(freqamd)
+desviofreqamd <- sd(freqamd)
+fteoricoNfreqamd <- dnorm(seq(min(freqamd),max(freqamd),by=0.01),mean=mediafreqamd,sd=desviofreqamd)
+fteoricoEfreqamd <- dexp(seq(min(freqamd),max(freqamd),by=0.01),rate=1/mediafreqamd)
+
+hist(freqamd,freq=F,xlab="Frequência Amd",ylab="Frequência Relativa",main="")
+lines(seq(min(freqamd),max(freqamd),by=0.01),fteoricoNfreqamd,col="red")
+lines(seq(min(freqamd),max(freqamd),by=0.01),fteoricoEfreqamd,col="blue")
+legend(x=4.3,y=0.8,legend=c("Normal","Exponencial"),lty=1,col=c("red","blue"),bty="n")
+
+qqnorm(freqamd,xlab="Quantis Teoricos",ylab="Amostra dos Quantis", main="Frequência (GH.z) Amd")
+qqline(freqamd,col="purple")
+
+###########################################################################
+## ANÁLISE NÚCLEOS AMD
+###########################################################################
+
+nuclamd <- Amd$Cores
+medianuclamd <- mean(nuclamd)
+desvionuclamd <- sd(nuclamd)
+fteoricoNnuclamd <- dnorm(seq(min(nuclamd),max(nuclamd),by=1),mean=medianuclamd,sd=desvionuclamd)
+fteoricoEnuclamd <- dexp(seq(min(nuclamd),max(nuclamd),by=1),rate=1/medianuclamd)
+
+hist(nuclamd,freq=F,xlab="Núcleos Amd",ylab="Frequência Relatoiva",main="")
+lines(seq(min(nuclamd),max(nuclamd),by=1),fteoricoNnuclamd,col="red")
+lines(seq(min(nuclamd),max(nuclamd),by=1),fteoricoEnuclamd,col="blue")
+legend(x=25,y=0.08,legend=c("Normal","Exponencial"),lty=1,col=c("red","blue"),bty="n")
+
+qqnorm(nuclamd,xlab="Quantis Teoricos",ylab="Amostra dos Quantis",main="Núcleos Amd")
+qqline(nuclamd,col="purple")
+
+###########################################################################
+## ANÁLISE PREÇO INTEL
+###########################################################################
+
+precintel <- Intel$Price
+mediaprecintel <- mean(precintel)
+desvioprecintel <- sd(precintel)
+fteoricoNprecintel <- dnorm(seq(min(precintel), max(precintel),by=1), mean=mediaprecintel,sd=desvioprecintel)
+fteoricoEprecintel <- dexp(seq(min(precintel), max(precintel), by=1), rate=1/mediaprecintel)
+
+hist(precintel,freq=F,xlab="Preço Intel",ylab="Frequência RelatiVa",main="")
+lines(seq(min(precintel),max(precintel),by=1),fteoricoNprecintel,col="red")
+lines(seq(min(precintel),max(precintel),by=1),fteoricoEprecintel,col="blue")
+legend(x=3000,y=6e-04,legend=c("Normal","Exponencial"),lty=1,col=c("red","blue"),bty="n")
+
+qqnorm(precamd,xlab="Quantis Teoricos",ylab="Amostra dos Quantis",main="Preço Intel")
+qqline(precamd,col="purple")
+
+
+###########################################################################
+## ANÁLISE FREQUÊNCIA INTEL
+###########################################################################
+
+freqintel <- Intel$Speed.GHz.
+mediafreqintel <- mean(freqintel)
+desviofreqintel <- sd(freqintel)
+fteoricoNfreqintel <- dnorm(seq(min(freqintel),max(freqintel),by=0.01),mean=mediafreqintel,sd=desviofreqintel)
+fteoricoEfreqintel <- dexp(seq(min(freqintel),max(freqintel),by=0.01),rate=1/mediafreqintel)
+
+hist(freqintel,freq=F,xlab="Frequência Intel",ylab="Frequência Relativa",main="")
+lines(seq(min(freqintel),max(freqintel),by=0.01),fteoricoNfreqintel,col="red")
+lines(seq(min(freqintel),max(freqintel),by=0.01),fteoricoEfreqintel,col="blue")
+legend(x=3.8,y=0.9,legend=c("Normal","Exponencial"),lty=1,col=c("red","blue"),bty="n")
+
+qqnorm(freqintel,xlab="Quantis Teoricos",ylab="Amostra dos Quantis", main="Frequência (GH.z) Intel")
+qqline(freqintel,col="purple")
+
+###########################################################################
+## ANÁLISE NÚCLEOS INTEL
+###########################################################################
+
+nuclintel <- Intel$Cores
+medianuclintel <- mean(nuclintel)
+desvionuclintel <- sd(nuclintel)
+fteoricoNnuclintel <- dnorm(seq(min(nuclintel),max(nuclintel),by=1),mean=medianuclintel,sd=desvionuclintel)
+fteoricoEnuclintel <- dexp(seq(min(nuclintel),max(nuclintel),by=1),rate=1/medianuclintel)
+
+hist(nuclintel,freq=F,xlab="Núcleos Intel",ylab="Frequência Relatoiva",main="")
+lines(seq(min(nuclintel),max(nuclintel),by=1),fteoricoNnuclintel,col="red")
+lines(seq(min(nuclintel),max(nuclintel),by=1),fteoricoEnuclintel,col="blue")
+legend(x=12,y=0.15,legend=c("Normal","Exponencial"),lty=1,col=c("red","blue"),bty="n")
+
+qqnorm(nuclintel,xlab="Quantis Teoricos",ylab="Amostra dos Quantis",main="Núcleos Intel")
+qqline(nuclintel,col="purple")
+
+###########################################################################
+## CORRELAÇÕES
+###########################################################################
+
+
+## PREÇO vs NÚCLEOS - AMD
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Amd$Price, Amd$Cores, method = "pearson")
+cor.test(Amd$Price, Amd$Cores, method = "kendall")
+cor.test(Amd$Price, Amd$Cores, method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Amd$Price and Amd$Cores
+## t = 22.623, df = 28, p-value < 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+## 0.9449357 0.9875540
+## sample estimates:
+##      cor 
+## 0.9737201
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E O NÚCLEO
+
+##GRAFICO DE CORRELAÇÃO
+plot(Amd$Price, Amd$Cores, main="CORRELAÇÃO ENTRE PREÇO E NÚCLEOS AMD",xlab="Price",ylab="Núcleos")
+
+
+## PREÇO vs FREQUÊNCIA - AMD
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Amd$Price, Amd$Speed.GHz., method = "pearson")
+cor.test(Amd$Price, Amd$Speed.GHz., method = "kendall")
+cor.test(Amd$Price, Amd$Speed.GHz., method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Amd$Price and Amd$Speed.GHz.
+## t = -2.5146, df = 28, p-value = 0.01794
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+## -0.68375554 -0.08156118
+## sample estimates:
+## cor 
+## -0.4292183 
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E A FREQUÊNCIA
+
+##GRAFICO DE CORRELAÇÃO
+plot(Amd$Price, Amd$Speed.GHz., main="CORRELAÇÃO ENTRE PREÇO E FREQUÊNCIA AMD",xlab="Price",ylab="Speed.GHz.")
+
+
+## PREÇO vs THREADS - AMD
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Amd$Price, Amd$Threads, method = "pearson")
+cor.test(Amd$Price, Amd$Threads, method = "kendall")
+cor.test(Amd$Price, Amd$Threads, method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Amd$Price and Amd$Threads
+## t = 25.195, df = 28, p-value < 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.9551415 0.9899018
+## sample estimates:
+##  cor 
+## 0.9786495 
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E O NÚCLEO
+
+##GRAFICO DE CORRELAÇÃO
+plot(Amd$Price, Amd$Threads, main="CORRELAÇÃO ENTRE PREÇO E THREADS AMD",xlab="Price",ylab="Threads")
+
+
+## PREÇO vs CACHÊ - AMD
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Amd$Price, Amd$Cache.M., method = "pearson")
+cor.test(Amd$Price, Amd$Cache.M., method = "kendall")
+cor.test(Amd$Price, Amd$Cache.M., method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Amd$Price and Amd$Cache.M.
+## t = 5.5708, df = 28, p-value = 5.843e-06
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+## 0.4937578 0.8605363
+## sample estimates:
+## cor 
+## 0.7250508 
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E O NÚCLEO
+
+##GRAFICO DE CORRELAÇÃO
+plot(Amd$Price, Amd$Cache.M., main="CORRELAÇÃO ENTRE PREÇO E CACHÊS AMD",xlab="Price",ylab="Cache.M")
+
+
+## PREÇO vs (THREADS + NÚCLEOS) - AMD
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Amd$Price, Amd$Threads+Amd$Cores, method = "pearson")
+cor.test(Amd$Price, Amd$Threads+Amd$Cores, method = "kendall")
+cor.test(Amd$Price, Amd$Threads+Amd$Cores, method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Amd$Price and Amd$Threads + Amd$Cores
+## t = 27.94, df = 28, p-value < 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.9632235 0.9917476
+## sample estimates:
+##  cor 
+## 0.982534 
+
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E THREADS+NÚCLEOS
+
+##GRAFICO DE CORRELAÇÃO
+plot(Amd$Threads+Amd$Cores, Amd$Price, main="CORRELAÇÃO ENTRE PREÇO E THREADS+NÚCLEOS AMD",xlab="Threads + Núcleos",ylab="Preço")
+
+
+## PREÇO vs (THREADS +  FREQUÊNCIA) - AMD
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Amd$Price, Amd$Threads+Amd$Speed.GHz., method = "pearson")
+cor.test(Amd$Price, Amd$Threads+Amd$Speed.GHz., method = "kendall")
+cor.test(Amd$Price, Amd$Threads+Amd$Speed.GHz., method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Amd$Price and Amd$Threads + Amd$Speed.GHz.
+## t = 26.042, df = 28, p-value < 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.9578937 0.9905317
+## sample estimates:
+##  cor 
+## 0.9799742 
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E THREADS + FREQUÊNCIA
+
+##GRAFICO DE CORRELAÇÃO
+plot(Amd$Threads+Amd$Speed.GHz., Amd$Price, main="CORRELAÇÃO ENTRE PREÇO E THREADS + FREQUÊNCIA AMD",xlab="Threads + Frequência",ylab="Preço")
+
+
+## PREÇO vs (FREQUÊNCIA + NÚCLEOS) - AMD
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Amd$Price, Amd$Speed.GHz.+Amd$Cores, method = "pearson")
+cor.test(Amd$Price, Amd$Speed.GHz.+Amd$Cores, method = "kendall")
+cor.test(Amd$Price, Amd$Speed.GHz.+Amd$Cores, method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Amd$Price and Amd$Speed.GHz. + Amd$Cores
+## t = 21.548, df = 28, p-value < 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.9396286 0.9863256
+## sample estimates:
+##  cor 
+## 0.9711461 
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E A FREQUÊNCIA + NÚCLEO
+
+##GRAFICO DE CORRELAÇÃO
+plot(Amd$Cores+Amd$Speed.GHz., Amd$Price, main="CORRELAÇÃO ENTRE PREÇO E FREQUÊNCIA + NÚCLEOS AMD",xlab="Frequência + Núcleos",ylab="Preço")
+
+
+## PREÇO vs (FREQUÊNCIA + CACHÊ) - AMD
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Amd$Price, Amd$Speed.GHz.+Amd$Cache.M., method = "pearson")
+cor.test(Amd$Price, Amd$Speed.GHz.+Amd$Cache.M., method = "pearson")
+cor.test(Amd$Price, Amd$Speed.GHz.+Amd$Cache.M., method = "pearson")
+
+##  Pearson's product-moment correlation
+
+## data:  Amd$Price and Amd$Speed.GHz. + Amd$Cache.M.
+## t = 4.7602, df = 28, p-value = 5.342e-05
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.4064648 0.8292591
+## sample estimates:
+##  cor 
+## 0.6687975 
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E FREQUÊNCIA + CACHÊ
+
+##GRAFICO DE CORRELAÇÃO
+plot(Amd$Cache.M.+Amd$Speed.GHz., Amd$Price, main="CORRELAÇÃO ENTRE PREÇO E FREQUÊNCIA + CACHÊ AMD",xlab="Frequência + Cachê",ylab="Preço")
+
+
+## PREÇO vs (THREADS + NÚCLEOS + CACHÊ)- AMD
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Amd$Price, Amd$Threads+Amd$Cores+Amd$Cache.M., method = "pearson")
+cor.test(Amd$Price, Amd$Threads+Amd$Cores+Amd$Cache.M., method = "kendall")
+cor.test(Amd$Price, Amd$Threads+Amd$Cores+Amd$Cache.M., method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Amd$Price and Amd$Threads + Amd$Cores + Amd$Cache.M.
+## t = 26.592, df = 28, p-value < 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.9595497 0.9909100
+## sample estimates:
+##  cor 
+## 0.9807703 
+
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E THREADS + NÚCLEOS + CACHÊ
+
+##GRAFICO DE CORRELAÇÃO
+plot(Amd$Cache.M.+Amd$Threads+Amd$Cores, Amd$Price, main="CORRELAÇÃO ENTRE PREÇO E  NÚCLEOS + CACHÊ + THREADS",xlab="Núcleos + Cachê + Threads AMD",ylab="Preço")
+
+
+## PREÇO vs (THREADS + FREQUÊNCIA + CACHÊ)- AMD
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Amd$Price, Amd$Threads+Amd$Speed.GHz.+Amd$Cache.M., method = "pearson")
+cor.test(Amd$Price, Amd$Threads+Amd$Speed.GHz.+Amd$Cache.M., method = "kendall")
+cor.test(Amd$Price, Amd$Threads+Amd$Speed.GHz.+Amd$Cache.M., method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Amd$Price and Amd$Threads + Amd$Speed.GHz. + Amd$Cache.M.
+## t = 27.947, df = 28, p-value < 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.963243 0.991752
+## sample estimates:
+##  cor 
+## 0.9825433 
+
+
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E THREADS + FREQUÊNCIA + CACHÊ
+
+##GRAFICO DE CORRELAÇÃO
+plot(Amd$Cache.M.+Amd$Threads+Amd$Speed.GHz., Amd$Price, main="CORRELAÇÃO ENTRE PREÇO E  FREQUÊNCIA + CACHÊ + THREADS",xlab="Frequência + Cachê + Threads AMD",ylab="Preço")
+
+## PREÇO vs (THREADS + FREQUÊNCIA + NÚCLEOS)- AMD
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Amd$Price, Amd$Threads+Amd$Speed.GHz.+Amd$Cores, method = "pearson")
+cor.test(Amd$Price, Amd$Threads+Amd$Speed.GHz.+Amd$Cores, method = "kendall")
+cor.test(Amd$Price, Amd$Threads+Amd$Speed.GHz.+Amd$Cores, method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Amd$Price and Amd$Threads + Amd$Speed.GHz. + Amd$Cores
+## t = 28.545, df = 28, p-value < 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.9647155 0.9920871
+## sample estimates:
+##  cor 
+## 0.9832493 
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E THREADS + FREQUÊNCIA + NÚCLEOS
+
+##GRAFICO DE CORRELAÇÃO
+plot(Amd$Speed.GHz.+Amd$Threads+Amd$Cores, Amd$Price, main="CORRELAÇÃO ENTRE PREÇO E  FREQUÊNCIA + NÚCLEOS + THREADS",xlab="Frequência + Núcleos + Threads AMD",ylab="Preço")
+
+## PREÇO vs (CACHÊ + FREQUÊNCIA + NÚCLEOS)- AMD
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Amd$Price, Amd$Cache.M.+Amd$Speed.GHz.+Amd$Cores, method = "pearson")
+cor.test(Amd$Price, Amd$Cache.M.+Amd$Speed.GHz.+Amd$Cores, method = "kendall")
+cor.test(Amd$Price, Amd$Cache.M.+Amd$Speed.GHz.+Amd$Cores, method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Amd$Price and Amd$Cache.M. + Amd$Speed.GHz. + Amd$Cores
+## t = 13.026, df = 28, p-value = 2.1e-13
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.8498735 0.9647334
+## sample estimates:
+##  cor 
+## 0.9264724 
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E CACHÊ + FREQUÊNCIA + NÚCLEOS
+
+##GRAFICO DE CORRELAÇÃO
+plot(Amd$Speed.GHz.+Amd$Cache.M.+Amd$Cores, Amd$Price, main="CORRELAÇÃO ENTRE PREÇO E  FREQUÊNCIA + NÚCLEOS + CACHÊ AMD",xlab="Frequência + Núcleos + Cachê",ylab="Preço")
+
+
+## PREÇO vs (CACHÊ + FREQUÊNCIA + NÚCLEOS + THREADS)- AMD
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Amd$Price, Amd$Cache.M.+Amd$Speed.GHz.+Amd$Cores+Amd$Threads, method = "pearson")
+cor.test(Amd$Price, Amd$Cache.M.+Amd$Speed.GHz.+Amd$Cores+Amd$Threads, method = "kendall")
+cor.test(Amd$Price, Amd$Cache.M.+Amd$Speed.GHz.+Amd$Cores+Amd$Threads, method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Amd$Price and Amd$Cache.M. + Amd$Speed.GHz. + Amd$Cores + Amd$Threads
+## t = 26.739, df = 28, p-value < 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.9599769 0.9910076
+## sample estimates:
+##  cor 
+## 0.9809756 
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E CACHÊ + FREQUÊNCIA + NÚCLEOS +THREADS
+
+##GRAFICO DE CORRELAÇÃO
+plot(Amd$Threads+Amd$Cache.M.+Amd$Cores+Amd$Speed.GHz., Amd$Price, main="CORRELAÇÃO ENTRE PREÇO E  FREQUÊNCIA + NÚCLEOS + CACHÊ + THREADS AMD",xlab="Frequência + Núcleos + Cachê + Threads",ylab="Preço")
+
+
+## PREÇO vs NÚCLEOS - Intel 
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Intel$Price, Intel$Cores, method = "pearson")
+cor.test(Intel$Price, Intel$Cores, method = "kendall")
+cor.test(Intel$Price, Intel$Cores, method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Intel$Price and Intel$Cores
+## t = 10.55, df = 29, p-value = 1.932e-11
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.7836611 0.9463469
+## sample estimates:
+##  cor 
+## 0.890676 
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E O NÚCLEO
+
+##GRAFICO DE CORRELAÇÃO
+plot(Intel$Price, Intel$Cores, main="CORRELAÇÃO ENTRE PREÇO E NÚCLEOS INTEL",xlab="Price",ylab="Núcleos")
+
+
+## PREÇO vs FREQUÊNCIA - Intel
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Intel$Price, Intel$Speed.GHz., method = "pearson")
+cor.test(Intel$Price, Intel$Speed.GHz., method = "kendall")
+cor.test(Intel$Price, Intel$Speed.GHz., method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Intel$Price and Intel$Speed.GHz.
+## t = -5.3461, df = 29, p-value = 9.695e-06
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.8473373 -0.4666960
+## sample estimates:
+##  cor 
+## -0.7045288 
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E A FREQUÊNCIA
+
+##GRAFICO DE CORRELAÇÃO
+plot(Intel$Price, Intel$Speed.GHz., main="CORRELAÇÃO ENTRE PREÇO E FREQUÊNCIA INTEL",xlab="Price",ylab="Speed.GHz.")
+
+
+## PREÇO vs THREADS - Intel
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Intel$Price, Intel$Threads, method = "pearson")
+cor.test(Intel$Price, Intel$Threads, method = "kendall")
+cor.test(Intel$Price, Intel$Threads, method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Intel$Price and Intel$Threads
+## t = 10.546, df = 29, p-value = 1.948e-11
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.7835376 0.9463135
+## sample estimates:
+##  cor 
+## 0.8906099 
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E O NÚCLEO
+
+##GRAFICO DE CORRELAÇÃO
+plot(Intel$Price, Intel$Threads, main="CORRELAÇÃO ENTRE PREÇO E THREADS INTEL",xlab="Price",ylab="Threads")
+
+
+## PREÇO vs CACHÊ - Intel
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Intel$Price, Intel$Cache.M., method = "pearson")
+cor.test(Intel$Price, Intel$Cache.M., method = "kendall")
+cor.test(Intel$Price, Intel$Cache.M., method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Intel$Price and Intel$Cache.M.
+## t = 5.1023, df = 29, p-value = 1.909e-05
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.4408940 0.8379161
+## sample estimates:
+##  cor 
+## 0.6877841 
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E O NÚCLEO
+
+##GRAFICO DE CORRELAÇÃO
+plot(Intel$Price, Intel$Cache.M., main="CORRELAÇÃO ENTRE PREÇO E CACHÊS INTEL",xlab="Price",ylab="Cache.M")
+
+
+## PREÇO vs (THREADS + NÚCLEOS) - Intel
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Intel$Price, Intel$Threads+Intel$Cores, method = "pearson")
+cor.test(Intel$Price, Intel$Threads+Intel$Cores, method = "kendall")
+cor.test(Intel$Price, Intel$Threads+Intel$Cores, method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Intel$Price and Intel$Threads + Intel$Cores
+## t = 10.727, df = 29, p-value = 1.31e-11
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.7893371 0.9478793
+## sample estimates:
+##  cor 
+## 0.8937116 
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E THREADS+NÚCLEOS
+
+##GRAFICO DE CORRELAÇÃO
+plot(Intel$Threads+Intel$Cores, Intel$Price, main="CORRELAÇÃO ENTRE PREÇO E THREADS+NÚCLEOS INTEL",xlab="Threads + Núcleos",ylab="Preço")
+
+
+## PREÇO vs (THREADS +  FREQUÊNCIA) - Intel
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Intel$Price, Intel$Threads+Intel$Speed.GHz., method = "pearson")
+cor.test(Intel$Price, Intel$Threads+Intel$Speed.GHz., method = "kendall")
+cor.test(Intel$Price, Intel$Threads+Intel$Speed.GHz., method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Intel$Price and Intel$Threads + Intel$Speed.GHz.
+## t = 10.405, df = 29, p-value = 2.663e-11
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.7788545 0.9450435
+## sample estimates:
+##  cor 
+## 0.8880979 
+
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E THREADS + FREQUÊNCIA
+
+##GRAFICO DE CORRELAÇÃO
+plot(Intel$Threads+Intel$Speed.GHz., Intel$Price, main="CORRELAÇÃO ENTRE PREÇO E THREADS + FREQUÊNCIA INTEL",xlab="Threads + Frequência",ylab="Preço")
+
+
+## PREÇO vs (FREQUÊNCIA + NÚCLEOS) - Intel
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Intel$Price, Intel$Speed.GHz.+Intel$Cores, method = "pearson")
+cor.test(Intel$Price, Intel$Speed.GHz.+Intel$Cores, method = "kendall")
+cor.test(Intel$Price, Intel$Speed.GHz.+Intel$Cores, method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Intel$Price and Intel$Speed.GHz. + Intel$Cores
+## t = 10.159, df = 29, p-value = 4.611e-11
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.7703832 0.9427334
+## sample estimates:
+##  cor 
+## 0.8835373 
+
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E A FREQUÊNCIA + NÚCLEO
+
+##GRAFICO DE CORRELAÇÃO
+plot(Intel$Cores+Intel$Speed.GHz., Intel$Price, main="CORRELAÇÃO ENTRE PREÇO E FREQUÊNCIA + NÚCLEOS INTEL",xlab="Frequência + Núcleos",ylab="Preço")
+
+
+## PREÇO vs (FREQUÊNCIA + CACHÊ) - Intel
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Intel$Price, Intel$Speed.GHz.+Intel$Cache.M., method = "pearson")
+cor.test(Intel$Price, Intel$Speed.GHz.+Intel$Cache.M., method = "pearson")
+cor.test(Intel$Price, Intel$Speed.GHz.+Intel$Cache.M., method = "pearson")
+
+##  Pearson's product-moment correlation
+
+## data:  Intel$Price and Intel$Speed.GHz. + Intel$Cache.M.
+## t = 4.9059, df = 29, p-value = 3.295e-05
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.4191207 0.8297775
+## sample estimates:
+##  cor 
+## 0.6734464 
+
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E FREQUÊNCIA + CACHÊ
+
+##GRAFICO DE CORRELAÇÃO
+plot(Intel$Cache.M.+Intel$Speed.GHz., Intel$Price, main="CORRELAÇÃO ENTRE PREÇO E FREQUÊNCIA + CACHÊ INTEL",xlab="Frequência + Cachê",ylab="Preço")
+
+
+## PREÇO vs (THREADS + NÚCLEOS + CACHÊ)- Intel
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Intel$Price, Intel$Threads+Intel$Cores+Intel$Cache.M., method = "pearson")
+cor.test(Intel$Price, Intel$Threads+Intel$Cores+Intel$Cache.M., method = "kendall")
+cor.test(Intel$Price, Intel$Threads+Intel$Cores+Intel$Cache.M., method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Intel$Price and Intel$Threads + Intel$Cores + Intel$Cache.M.
+## t = 9.1349, df = 29, p-value = 4.932e-10
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.7299174 0.9314654
+## sample estimates:
+##  cor 
+## 0.8614524 
+
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E THREADS + NÚCLEOS + CACHÊ
+
+##GRAFICO DE CORRELAÇÃO
+plot(Intel$Cache.M.+Intel$Threads+Intel$Cores, Intel$Price, main="CORRELAÇÃO ENTRE PREÇO E  NÚCLEOS + CACHÊ + THREADS INTEL",xlab="Núcleos + Cachê + Threads",ylab="Preço")
+
+
+## PREÇO vs (THREADS + FREQUÊNCIA + CACHÊ)- Intel
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Intel$Price, Intel$Threads+Intel$Speed.GHz.+Intel$Cache.M., method = "pearson")
+cor.test(Intel$Price, Intel$Threads+Intel$Speed.GHz.+Intel$Cache.M., method = "kendall")
+cor.test(Intel$Price, Intel$Threads+Intel$Speed.GHz.+Intel$Cache.M., method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Intel$Price and Intel$Threads + Intel$Speed.GHz. + Intel$Cache.M.
+## t = 8.3505, df = 29, p-value = 3.327e-09
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.6921833 0.9205977
+## sample estimates:
+##  cor 
+##  0.8404 
+
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E THREADS + FREQUÊNCIA + CACHÊ
+
+##GRAFICO DE CORRELAÇÃO
+plot(Intel$Cache.M.+Intel$Threads+Intel$Speed.GHz., Intel$Price, main="CORRELAÇÃO ENTRE PREÇO E  FREQUÊNCIA + CACHÊ + THREADS INTEL",xlab="Frequência + Cachê + Threads",ylab="Preço")
+
+## PREÇO vs (THREADS + FREQUÊNCIA + NÚCLEOS)- Intel
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Intel$Price, Intel$Threads+Intel$Speed.GHz.+Intel$Cores, method = "pearson")
+cor.test(Intel$Price, Intel$Threads+Intel$Speed.GHz.+Intel$Cores, method = "kendall")
+cor.test(Intel$Price, Intel$Threads+Intel$Speed.GHz.+Intel$Cores, method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Intel$Price and Intel$Threads + Intel$Speed.GHz. + Intel$Cores
+## t = 10.638, df = 29, p-value = 1.594e-11
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.7864920 0.9471121
+## sample estimates:
+##  cor 
+## 0.8921912 
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E THREADS + FREQUÊNCIA + NÚCLEOS
+
+##GRAFICO DE CORRELAÇÃO
+plot(Intel$Speed.GHz.+Intel$Threads+Intel$Cores, Intel$Price, main="CORRELAÇÃO ENTRE PREÇO E  FREQUÊNCIA + NÚCLEOS + THREADS INTEL",xlab="Frequência + Núcleos + Threads",ylab="Preço")
+
+## PREÇO vs (CACHÊ + FREQUÊNCIA + NÚCLEOS)- Intel
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Intel$Price, Intel$Cache.M.+Intel$Speed.GHz.+Intel$Cores, method = "pearson")
+cor.test(Intel$Price, Intel$Cache.M.+Intel$Speed.GHz.+Intel$Cores, method = "kendall")
+cor.test(Intel$Price, Intel$Cache.M.+Intel$Speed.GHz.+Intel$Cores, method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Intel$Price and Intel$Cache.M. + Intel$Speed.GHz. + Intel$Cores
+## t = 7.1078, df = 29, p-value = 8.047e-08
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.6169796 0.8978292
+## sample estimates:
+##  cor 
+## 0.7970649 
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E CACHÊ + FREQUÊNCIA + NÚCLEOS
+
+##GRAFICO DE CORRELAÇÃO
+plot(Intel$Speed.GHz.+Intel$Cache.M.+Intel$Cores, Intel$Price, main="CORRELAÇÃO ENTRE PREÇO E  FREQUÊNCIA + NÚCLEOS + CACHÊ INTEL",xlab="Frequência + Núcleos + Cachê",ylab="Preço")
+
+
+## PREÇO vs (CACHÊ + FREQUÊNCIA + NÚCLEOS + THREADS)- Intel
+## H0= NÃO EXISTE CORRELAÇÃO
+## H1= EXISTE CORRELAÇÃO
+
+cor.test(Intel$Price, Intel$Cache.M.+Intel$Speed.GHz.+Intel$Cores+Intel$Threads, method = "pearson")
+cor.test(Intel$Price, Intel$Cache.M.+Intel$Speed.GHz.+Intel$Cores+Intel$Threads, method = "kendall")
+cor.test(Intel$Price, Intel$Cache.M.+Intel$Speed.GHz.+Intel$Cores+Intel$Threads, method = "spearman")
+
+##  Pearson's product-moment correlation
+
+## data:  Intel$Price and Intel$Cache.M. + Intel$Speed.GHz. + Intel$Cores + Intel$Threads
+## t = 9.0784, df = 29, p-value = 5.644e-10
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.7274126 0.9307549
+## sample estimates:
+##  cor 
+## 0.8600687 
+
+## P-VALOR < ALPHA, PORTANTO EXISTE EVIDENCIAS QUE OCORRA CORRELACAO ENTRE PREÇO E CACHÊ + FREQUÊNCIA + NÚCLEOS +THREADS
+
+##GRAFICO DE CORRELAÇÃO
+plot(Intel$Threads+Intel$Cache.M.+Intel$Cores+Intel$Speed.GHz., Intel$Price, main="CORRELAÇÃO ENTRE PREÇO E  FREQUÊNCIA + NÚCLEOS + CACHÊ + THREADS INTEL",xlab="Frequência + Núcleos + Cachê + Threads",ylab="Preço")
+
+
+################################################################################
+## TESTE DE NORMALIDADE DE SHAPIRO-WILK
+################################################################################
+##H0= SEGUE DIST. NORMAL
+##H1= NAO SEGUE DIST. NORMAL
+
+## TESTE SHAPIRO-WILK PARA "PREÇO AMD"
+shapiro.test((precamd))
+
+## Shapiro-Wilk normality test
+
+## data:  (precamd)
+## W = 0.66226, p-value = 4.606e-07
+## NAO SEGUE DISTRIBUICAO NORMAL
+
+
+## TESTE SHAPIRO-WILK PARA "FREQUÊNCIA AMD"
+shapiro.test(freqamd)
+
+## Shapiro-Wilk normality test
+
+## data:  freqamd
+## W = 0.97433, p-value = 0.6631
+## NÃO SEGUE DISTRIBUIÇÃO NORMAL
+
+
+## TESTE SHAPIRO-WILK PARA "NÚCLEOS AMD"
+shapiro.test(nuclamd)
+
+## Shapiro-Wilk normality test
+
+## data:  nuclamd
+## W = 0.6728, p-value = 6.422e-07
+## NÃO SEGUE DISTRIBUIÇÃO NORMAL
+
+
+##TESTE SHAPIRO-WILK PARA "PREÇO INTEL"
+shapiro.test(precintel)
+
+## Shapiro-Wilk normality test
+
+## data:  precintel
+## W = 0.77587, p-value = 1.904e-05
+## NÃO SEGUE DISTRIBUIÇÃO NORMAL
+
+##TESTE SHAPIRO-WILK PARA "FREQUÊNCIA INTEL"
+shapiro.test(freqintel)
+
+## Shapiro-Wilk normality test
+
+## data:  freqintel
+## W = 0.97836, p-value = 0.7658
+## NÃO SEGUE DISTRIBUIÇÃO NORMAL
+
+
+##TESTE SHAPIRO-WILK PARA "NÚCLEOS INTEL"
+shapiro.test(nuclintel)
+
+## Shapiro-Wilk normality test
+
+## data:  nuclintel
+## W = 0.89005, p-value = 0.004107    
+
+################################################################################
+## INFERENCIA ESTATISTICA
+################################################################################
+
+## POSSIVEIS RESULTADOS ESPERADOS ##
+
+## O preço do processador está ligado as suas características tais como:
+## (Cores, Thereads, Speed.GHz., CACHE.M)
+## Os componentes do processador(variáveis)influenciam fortemente no valor, e quanto mais componente mas o valor tende a subir
+## Entre as marcas Amd se mostra mais consistente, pelo valor que se paga e aquilo que o processador entrega
 
 -----
 

@@ -99,15 +99,9 @@ print(t_test_resultado)
 
 ## 5\. Figuras Geradas e Explicações
 
-Insira aqui gráficos com breve explicação. Para adicionar imagens no Markdown do GitHub:
-
-```markdown
-![Imagens Boxplot]()
-![Imagens Histograma]()
-```
-
 ### 5.1. Histograma
 #### 5.1.1 Histograma da Variável [Frequência AMD]
+
   * **Explicação:** Este histograma ilustra a distribuição das frequências (em GHz) dos processadores AMD. É possível perceber que a maioria desses processadores opera entre aproximadamente 3,0 GHz e 4,0 GHz, com uma concentração mais evidente na faixa de 3,2 a 3,8 GHz.
 
 A forma da distribuição sugere uma leve assimetria para a esquerda, já que os valores se agrupam principalmente em torno da média, mas há alguns poucos processadores com frequências menores, como 2,8 GHz, que puxam a cauda da curva nessa direção.
@@ -117,6 +111,7 @@ Além da distribuição empírica, duas curvas foram adicionadas ao gráfico par
 Essa visualização ajuda a compreender melhor o perfil de desempenho dos processadores AMD no que diz respeito à frequência de operação. Além disso, permite avaliar se modelos estatísticos como a normal ou a exponencial são adequados para representar esse conjunto de dados, o que pode ser útil em análises comparativas, simulações ou previsões.
 
 #### 5.1.2 Histograma da Variável [Núcleo AMD]
+![Imagens Boxplot]
 Este histograma representa a distribuição da quantidade de núcleos dos processadores AMD. Nota-se que a maior parte dos modelos analisados possui entre 6 e 12 núcleos, o que caracteriza uma forte concentração nessa faixa. Poucos modelos apresentam quantidades mais elevadas, como 16, 24 ou 32 núcleos.
 
 A distribuição é assimétrica à direita (positiva), indicando que há uma cauda estendida em direção a valores maiores, embora a maioria dos dados esteja concentrada em valores menores. Ou seja, a presença de processadores com muitos núcleos é menos comum, mas ainda significativa.
@@ -199,6 +194,8 @@ Dessa forma, os gráficos não apenas mostram desvios da normalidade, mas eviden
 
 ### 5.3. Gráfico Boxplot 
 #### 5.3.1 Gráfico Boxplot da Variável Categórica [Frequência AMD] e [Frequência Intel]
+
+
 Os gráficos de boxplot apresentados permitem uma análise clara e objetiva da distribuição das frequências (em GHz) dos processadores das marcas AMD e Intel. Esse tipo de gráfico é bastante útil para identificar o comportamento central dos dados, a dispersão, a simetria e a presença de valores atípicos, elementos que ajudam a interpretar a consistência e a performance média dos processadores.
 
 No boxplot da AMD, observa-se uma distribuição relativamente simétrica e compacta, com a maioria das frequências concentradas entre aproximadamente 3,0 GHz e 4,0 GHz. A linha central (mediana) está ligeiramente abaixo dos 3,5 GHz, sugerindo que metade dos modelos testados possui frequências abaixo desse valor e a outra metade, acima. Há apenas um outlier visível, com frequência acima de 4,5 GHz, indicando um modelo que ultrapassa consideravelmente o padrão dos demais, provavelmente voltado a alto desempenho. O intervalo interquartil (IQR) é bem definido, o que demonstra consistência e pouca variação entre os modelos.
@@ -239,6 +236,8 @@ No fundo, essa comparação deixa claro que não existe uma marca melhor de form
 Então, antes de decidir, vale se perguntar: você quer gastar menos e ainda ter um bom desempenho, talvez até mais núcleos? Ou está disposto a pagar mais para ter um processador com uma performance mais previsível e refinada? Com base nos dados analisados, essa resposta fica muito mais clara.
 
 #### 5.3.4 Gráfico Boxplot da Variável Categórica [Cache AMD] e [Cache Intel]
+![Imagens Boxplot](https://github.com/EstatisticaNaMatematica/Trabalho-Estat-stica-Amd-vs-Intel/blob/main/Boxplot/boxplot%20-%20cache%20amd.png)
+
 Os gráficos apresentados são boxplots que comparam a distribuição da memória cache (em megabytes) dos processadores das marcas AMD e Intel. A memória cache é um componente crucial para o desempenho do processador, pois permite o acesso mais rápido a dados frequentemente utilizados.
 
 No boxplot da AMD, observa-se que a maior parte dos processadores possui memória cache concentrada entre aproximadamente 50 MB e 350 MB. A mediana (linha central do boxplot) está em torno de 150 MB, indicando que metade dos modelos analisados tem até esse valor de cache. Há também a presença de outliers valores significativamente acima da média que chegam a ultrapassar 1600 MB, demonstrando que a AMD possui alguns modelos com desempenho elevado, embora sejam exceções dentro do conjunto analisado. A distribuição dos dados é relativamente dispersa, o que indica uma grande variedade de modelos, desde os mais básicos até os mais potentes.
